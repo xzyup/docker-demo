@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+docker stop test-nginx
+docker rm -f test-nginx
+set -e
+
+docker build --file ./nginx/Dockerfile --force-rm --tag test-nginx .
+exec docker run --rm --name test-nginx -p 9990:8080 test-nginx
